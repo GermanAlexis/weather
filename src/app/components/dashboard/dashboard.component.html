@@ -22,6 +22,9 @@
     <app-button-form></app-button-form>
   </div>
   <div class="w-1/2 px-3 flex flex-col">
-    <app-card></app-card>
+    <app-card
+      *ngIf="weather$ | async as weather"
+      [weather]="weather"
+    ></app-card>
   </div>
 </div>

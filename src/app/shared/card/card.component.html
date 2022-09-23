@@ -1,21 +1,41 @@
 <mat-card class="example-card">
-  <mat-progress-bar
+  <!-- <mat-progress-bar
     class="example-margin"
     [color]="color"
     [mode]="mode"
     [value]="value"
     [bufferValue]="bufferValue"
   >
-  </mat-progress-bar>
+  </mat-progress-bar> -->
   <mat-card-title-group>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Large</mat-card-subtitle>
+    <mat-card-title
+      >{{ weather.name }}, {{ weather.sys.country }}
+    </mat-card-title>
+    <mat-card-subtitle
+      >{{ weather.main.temp | number: "1.0-0" }}&#8451;
+
+      <p>{{ weather.weather[0].main }}</p>
+      <p>{{ weather.weather[0].description }}</p>
+    </mat-card-subtitle>
     <img
       mat-card-lg-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      src="{{ baseUrlIcon }}{{ weather.weather[0].icon }}@2x.png"
     />
   </mat-card-title-group>
   <mat-card-content>
-    {{ longText }}
+    <div class="w-full grid grid-cols-3 gap-3">
+      <div class="flex flex-col">
+        <label>Presipitacion</label>
+        <p>{{ weather.main.pressure }}<sub>hPa</sub></p>
+      </div>
+      <div class="flex flex-col">
+        <label>Humedad</label>
+        <p>{{ weather.main.humidity }}<sub>%</sub></p>
+      </div>
+      <div class="flex flex-col">
+        <label>Velocidad Viento</label>
+        <p>{{ weather.wind.speed }}<sub>m/s</sub></p>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
