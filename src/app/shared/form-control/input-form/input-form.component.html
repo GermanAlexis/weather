@@ -1,0 +1,13 @@
+<mat-form-field class="w-full" appearance="standard">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [type]="type"
+    class="form-control"
+    [formControl]="fc"
+    [placeholder]="placeholder"
+  />
+</mat-form-field>
+<div *ngIf="fc.hasError('required') && fc.touched">
+  {{ errorMessages["key"] }}
+</div>
