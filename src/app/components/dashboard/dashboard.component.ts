@@ -12,7 +12,7 @@ import { GeolocationService } from '../services/geolocation.service';
 })
 export class DashboardComponent implements OnInit {
   weather$!: Observable<IWeather>;
-
+  error: number = 0;
   form = this.fb.group({
     term: ['', [Validators.required, Validators.pattern(/[a-zA-Z0-9]/)]],
   });
@@ -25,13 +25,20 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWeather();
-    this.getWeatherGeoLocation();
+    if (navigator.geolocation) {
+      this.getWeatherGeoLocation();
+    }
   }
 
   getWeather() {
     let term = this.form.get('term').value;
     term = term.trim();
-    this.weather$ = this.weatherService.getWethearName(term);
+    try {
+      this.weather$ = this.weatherService.getWethearName(term);
+    } catch (error) {
+      console.log(error);
+      this.error = 0;
+    }
   }
 
   async getWeatherGeoLocation() {
