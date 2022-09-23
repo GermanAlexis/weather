@@ -19,13 +19,6 @@ const baseUrl = environment.openWeather.icon;
 export class CardComponent {
   @Input() weather!: IWeather;
   baseUrlIcon = baseUrl;
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
-  color: ThemePalette = 'primary';
-  mode: ProgressBarMode = 'indeterminate';
-  value = 50;
-  bufferValue = 75;
 
   constructor() {}
 }

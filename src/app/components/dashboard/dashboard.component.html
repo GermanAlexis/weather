@@ -20,7 +20,10 @@
       [weather]="weather"
     ></app-card>
 
-    <div class="w-1/2 px-3 flex flex-col items-center" *ngIf="error === 0">
+    <div
+      class="w-1/2 px-3 flex flex-col items-center"
+      *ngIf="(weather$ | async) === null"
+    >
       <p>
         No se encontro ninguna ciudad con el nombre {{ form.get("term").value }}
       </p>

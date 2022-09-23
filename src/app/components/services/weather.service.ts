@@ -12,7 +12,7 @@ const baseUrl = environment.openWeather;
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWethearName(city: string): Observable<IWeather> {
+  getWethearName(city: string) {
     const params = new HttpParams().set('q', city);
     return this.http.get<IWeather>(`${baseUrl.url}/weather`, { params });
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { IWeather } from '../../shared/interfaces/weather.interfaces';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { GeolocationService } from '../services/geolocation.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { GeolocationService } from '../services/geolocation.service';
 })
 export class DashboardComponent implements OnInit {
   weather$!: Observable<IWeather>;
-  error: number = 0;
+  errorStatus: number = 0;
   form = this.fb.group({
     term: ['', [Validators.required, Validators.pattern(/[a-zA-Z0-9]/)]],
   });
@@ -33,12 +33,7 @@ export class DashboardComponent implements OnInit {
   getWeather() {
     let term = this.form.get('term').value;
     term = term.trim();
-    try {
-      this.weather$ = this.weatherService.getWethearName(term);
-    } catch (error) {
-      console.log(error);
-      this.error = 0;
-    }
+    this.weather$ = this.weatherService.getWethearName(term);
   }
 
   async getWeatherGeoLocation() {
