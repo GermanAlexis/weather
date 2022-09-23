@@ -1,25 +1,18 @@
-<div class="justify-around flex flex-wrap items-center">
+<div class="justify-around flex sm:flex-row flex-col items-center">
   <div class="w-1/2 px-3 flex flex-col">
-    <app-input-form
-      [placeholder]="'Ciudad'"
-      [fc]="form.controls['city']"
-      [errorMessages]="{ key: 'error' }"
-      [label]="'Ciudad'"
-    ></app-input-form>
-    <app-input-form
-      [placeholder]="'Codigo Postal'"
-      [fc]="form.controls['codePostal']"
-      [label]="'Codigo Postal'"
-      >2</app-input-form
-    >
+    <form [formGroup]="form" (submit)="getWeather()">
+      <app-input-form
+        [placeholder]="'Ciudad'"
+        [fc]="form.controls['term']"
+        [errorMessages]="{ key: 'El campo es requerido' }"
+        [label]="'Ciudad'"
+      ></app-input-form>
 
-    <app-input-form
-      [placeholder]="'Zona'"
-      [label]="'Ciudad'"
-      [fc]="form.controls['codeZona']"
-      >3</app-input-form
-    >
-    <app-button-form></app-button-form>
+      <app-button-form
+        type="submit"
+        [disabled]="form.invalid"
+      ></app-button-form>
+    </form>
   </div>
   <div class="w-1/2 px-3 flex flex-col">
     <app-card

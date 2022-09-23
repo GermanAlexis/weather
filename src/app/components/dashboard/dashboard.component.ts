@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { WeatherService } from '../services/weather.service';
 import { IWeather } from '../../shared/interfaces/weather.interfaces';
 import { Observable } from 'rxjs';
@@ -13,9 +13,7 @@ export class DashboardComponent implements OnInit {
   weather$!: Observable<IWeather>;
 
   form = this.fb.group({
-    codePostal: [null],
-    city: [null],
-    codeZona: [null],
+    term: ['', [Validators.required, Validators.pattern(/[a-zA-Z0-9]/)]],
   });
 
   constructor(
@@ -24,11 +22,12 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('se inicio');
     this.getWeather();
   }
 
   getWeather() {
-    this.weather$ = this.weatherService.getWethearName('monteria');
+    let term = this.form.get('term').value;
+    term = term.trim();
+    this.weather$ = this.weatherService.getWethearName(term);
   }
 }

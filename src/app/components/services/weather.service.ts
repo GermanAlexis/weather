@@ -13,12 +13,7 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   getWethearName(city: string): Observable<IWeather> {
-    const params = new HttpParams()
-      .set('q', city)
-      .set('units', 'metric')
-      .set('appid', baseUrl.key)
-      .set('lang', 'es');
-
+    const params = new HttpParams().set('q', city);
     return this.http.get<IWeather>(`${baseUrl.url}/weather`, { params });
   }
 }

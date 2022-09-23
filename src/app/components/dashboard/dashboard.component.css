@@ -1,0 +1,5 @@
+:host ::ng-deep .mat-card-title-group div{
+  width: 60% !important;
+  text-align: center;
+  padding-top: 10px;
+}

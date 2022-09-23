@@ -1,0 +1,12 @@
+.card{
+  background: linear-gradient(#d8d4d4, #9198e5);
+}
+.card-contentd{
+
+    background-color: darkgrey;
+    color: unset;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}

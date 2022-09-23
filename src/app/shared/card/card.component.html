@@ -7,8 +7,8 @@
     [bufferValue]="bufferValue"
   >
   </mat-progress-bar> -->
-  <mat-card-title-group>
-    <mat-card-title
+  <mat-card-title-group class="card items-center">
+    <mat-card-title class="justify-center items-center"
       >{{ weather.name }}, {{ weather.sys.country }}
     </mat-card-title>
     <mat-card-subtitle
@@ -18,14 +18,14 @@
       <p>{{ weather.weather[0].description }}</p>
     </mat-card-subtitle>
     <img
-      mat-card-lg-image
+      style="width: 40%"
       src="{{ baseUrlIcon }}{{ weather.weather[0].icon }}@2x.png"
     />
   </mat-card-title-group>
-  <mat-card-content>
-    <div class="w-full grid grid-cols-3 gap-3">
+  <mat-card-content class="card-contentd">
+    <div class="w-full grid sm:grid-cols-3 gap-3 grid-cols-1 items-center">
       <div class="flex flex-col">
-        <label>Presipitacion</label>
+        <label>Precipitación</label>
         <p>{{ weather.main.pressure }}<sub>hPa</sub></p>
       </div>
       <div class="flex flex-col">
