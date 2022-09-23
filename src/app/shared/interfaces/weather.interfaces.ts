@@ -48,6 +48,6 @@ interface Weather {
 }
 
 export interface Coord {
-  lon: number;
-  lat: number;
+  latitude: number;
+  longitude: number;
 }
