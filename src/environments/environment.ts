@@ -7,6 +7,7 @@ export const environment = {
   openWeather: {
     key: '6ab600931303cae00a3a1e109fb9e576',
     url: 'https://api.openweathermap.org/data/2.5/',
+    icon: 'http://openweathermap.org/img/wn/',
   },
 };
 
